@@ -13,11 +13,13 @@ public class PlayerController : MonoBehaviour
     public GameObject cam;
 
     public GameObject projectilePrefab;
-    public GameObject spawner;
-    public GameObject rotator;
+    public Transform spawner;
 
     public float projectileSpeed = 10.0f;
     public float projectileLifeDuration = 1.0f;
+    public bool canFire;
+    private float timer;
+    public float timeBetweenFiring;
 
 
     // Start is called before the first frame update
@@ -36,9 +38,18 @@ public class PlayerController : MonoBehaviour
             Death();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canFire)
         {
             Fire();
+        }
+        if (!canFire)
+        {
+            timer += Time.deltaTime;
+            if (timer > timeBetweenFiring)
+            {
+                canFire = true;
+                timer = 0;
+            }
         }
 
         //MOVEMENT
@@ -60,6 +71,7 @@ public class PlayerController : MonoBehaviour
 
     void Fire()
     {
-        Instantiate(projectilePrefab, spawner.transform.position, spawner.transform.rotation);
+        canFire = false;
+        Instantiate(projectilePrefab, spawner.position, Quaternion.identity);
     }
 }

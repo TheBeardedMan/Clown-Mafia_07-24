@@ -156,10 +156,11 @@ MonoBehaviour:
   maxPlayerHealth: 100
   cam: {fileID: 797607431}
   projectilePrefab: {fileID: 1067389448455105325, guid: 3a98c09c4574c3b41a8f4877a32be62b, type: 3}
-  spawner: {fileID: 768343058}
-  rotator: {fileID: 0}
+  spawner: {fileID: 768343059}
   projectileSpeed: 10
-  projectileLifeDuration: 1
+  projectileLifeDuration: 0.2
+  canFire: 1
+  timeBetweenFiring: 1.2
 --- !u!212 &155329412
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -307,7 +308,7 @@ Transform:
   m_GameObject: {fileID: 595880428}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0368, z: 1}
+  m_LocalPosition: {x: -0.156, y: 0.037, z: 1}
   m_LocalScale: {x: 21.220863, y: 10.202328, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -423,7 +424,7 @@ Transform:
   m_GameObject: {fileID: 768343058}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.667, y: 0, z: 0.1}
+  m_LocalPosition: {x: 0.68, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

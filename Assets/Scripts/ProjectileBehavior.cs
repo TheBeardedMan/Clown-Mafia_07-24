@@ -4,29 +4,22 @@ using UnityEngine;
 
 public class ProjectileBehavior : MonoBehaviour
 {
-    public Vector2 bulletDirection = new Vector2(1,0);
-    public float bulletSpeed = 5.0f;
+    private Vector3 mousePosition;
+    private Camera mainCamera;
+    private Rigidbody2D rb;
+    public float force;
 
-    public Vector2 bulletVelocity;
-
-    private void Start()
+    private void Awake()
     {
-        Destroy(gameObject, 3);
-    }
+        mainCamera = Camera.main;
+        rb = GetComponent<Rigidbody2D>();
+        mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 direction = mousePosition - transform.position;
+        Vector3 rotation = transform.position - mousePosition;
+        rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
+        float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rot + 90);
 
-    void Update()
-    {
-        bulletVelocity = bulletDirection * bulletSpeed;
-
-        Vector2 pos = transform.position;
-
-        pos += bulletVelocity * Time.deltaTime;
-
-        //transform.position = pos;
-    }
-
-    private void FixedUpdate()
-    {
-
+        Destroy(gameObject, 0.2f);
     }
 }
