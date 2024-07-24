@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 155329413}
   - component: {fileID: 155329412}
   - component: {fileID: 155329411}
+  - component: {fileID: 155329414}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -154,13 +155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 4
   maxPlayerHealth: 100
-  cam: {fileID: 797607431}
-  projectilePrefab: {fileID: 1067389448455105325, guid: 3a98c09c4574c3b41a8f4877a32be62b, type: 3}
-  spawner: {fileID: 768343059}
-  projectileSpeed: 10
-  projectileLifeDuration: 0.2
-  canFire: 1
-  timeBetweenFiring: 1.2
 --- !u!212 &155329412
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -230,6 +224,33 @@ Transform:
   - {fileID: 1691461975}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &155329414
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155329410}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &595880428
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +329,7 @@ Transform:
   m_GameObject: {fileID: 595880428}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.156, y: 0.037, z: 1}
+  m_LocalPosition: {x: -0.573, y: 0.315, z: 1}
   m_LocalScale: {x: 21.220863, y: 10.202328, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -324,8 +345,9 @@ GameObject:
   m_Component:
   - component: {fileID: 603549594}
   - component: {fileID: 603549595}
+  - component: {fileID: 603549596}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,6 +421,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &603549596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603549593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9ce9af958a3d34b988b110a3edebda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 155329414}
+  projectilePrefab: {fileID: 1067389448455105325, guid: 3a98c09c4574c3b41a8f4877a32be62b, type: 3}
+  spawner: {fileID: 768343059}
+  pelletCount: 4
+  spread: 40
+  projectileLifeDuration: 0.15
+  canFire: 1
+  timeBetweenFiring: 1.2
+  kickBackAmount: 50
 --- !u!1 &768343058
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768343058}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.68, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -609,7 +652,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1691461974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9ce9af958a3d34b988b110a3edebda, type: 3}
+  m_Script: {fileID: 11500000, guid: d0be880882c3ccf40aade9d9724521ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 5
