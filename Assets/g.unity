@@ -441,7 +441,7 @@ MonoBehaviour:
   projectileLifeDuration: 0.15
   canFire: 1
   timeBetweenFiring: 1.2
-  kickBackAmount: 50
+  kickBackAmount: 100
 --- !u!1 &768343058
 GameObject:
   m_ObjectHideFlags: 0

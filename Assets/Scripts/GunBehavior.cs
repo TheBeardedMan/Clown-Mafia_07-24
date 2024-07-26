@@ -26,20 +26,11 @@ public class GunBehavior : MonoBehaviour
         player = player.GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && canFire)
         {
             Fire();
-        }
-        if (!canFire)
-        {
-            timer += Time.deltaTime;
-            if (timer > timeBetweenFiring)
-            {
-                canFire = true;
-                timer = 0;
-            }
         }
     }
 
@@ -61,6 +52,6 @@ public class GunBehavior : MonoBehaviour
         }
 
         Vector2 kickBackDirection = (player.transform.position - transform.position).normalized;
-        player.AddForce(transform.up * 10, ForceMode2D.Impulse);
+        player.AddForce(kickBackDirection * kickBackAmount, ForceMode2D.Impulse);
     }
 }
